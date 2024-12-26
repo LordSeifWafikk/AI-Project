@@ -1,6 +1,4 @@
 import random
-from search_algorithms import bfs
-from visualization import visualize
 
 
 class Maze:
@@ -18,15 +16,11 @@ class Maze:
         for row in self.grid:
             print(row)
 
-    def solve_maze(self):
-        path = bfs(self.grid, self.end)
+    def solve_maze(self, search_algorithm: callable):
+        path = search_algorithm(self.grid, self.end)
         return path
-
-    def visualize_path(self, path):
-        visualize(self.grid, path)
 
 
 if __name__ == "__main__":
     maze = Maze(5, 5, (4, 4))
     maze.generate_maze()
-    maze.print_maze()
